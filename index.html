@@ -31,29 +31,7 @@
           <div class="col-12 col-md-7">
             <div class="card">
               <button class="btn-sm -btn-green"></button>
-              <div class="row m-3" id="shorts">
-                <div class="col-12 col-md-6 p-3">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6 p-3">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
+              <div class="row m-3" id="shorts">              
               </div>
           </div>
         </div>
@@ -85,8 +63,8 @@
               </div>`
                 document.getElementById("profile").innerHTML = user;
               let shorts =  response.user.shortsAsCreator.map((short)=>{
-                  `
-                  <div class="col-6 p-3">
+                  return `
+                  <div class="col-12 col-md-6 p-3">
                     <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">${short.title}</h5>
@@ -96,6 +74,7 @@
                     </div>
                   </div>`
                 })
+                console.log(shorts)
                let shortContent = document.getElementById("shorts");
                
                shortContent.insertAdjacentHTML('beforeend', shorts);
