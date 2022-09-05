@@ -30,7 +30,6 @@
           event.preventDefault()
             fetch("https://api.lebenswiki.com/api/v1/users/profile", {
                 method:"GET",
-                body:JSON.stringify(user),
                 headers: {'Content-Type': "application/json"}
             })
             .then(res=>res.json())
