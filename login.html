@@ -34,7 +34,7 @@
         const password = document.getElementById("input-password");
         let user = {email:email.value, password:password.value}
         
-        fetch("https://api.lebenswiki.com/api/v1/users/admin/login", {
+        fetch("https://api.lebenswiki.com/api/v1/users/login", {
             method:"POST",
             body:JSON.stringify(user),
             headers: {'Content-Type': "application/json"}

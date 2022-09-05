@@ -25,6 +25,17 @@
         <h1>welcome.</h1>
       </div>
     </div>
+    <script>
+              
+        fetch("https://api.lebenswiki.com/api/v1/users/profile", {
+            method:"GET",
+            body:JSON.stringify(user),
+            headers: {'Content-Type': "application/json"}
+        })
+        .then(res=>res.json())
+        .then((response)=>{
+          console.log(response)
+        })
     </script>
   </body>
 </html>
