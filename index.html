@@ -67,12 +67,12 @@
                 document.getElementById("profile").innerHTML = user;
               let shorts =  response.user.shortsAsCreator.map((short)=>{
                   return `
-                  <div class="col-12 col-md-6 p-3">
+                  <div class="col-12 col-md-5 p-3">
                     <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">${short.title}</h5>
                       <p class="card-text">${short.content}</p>
-                      <a href="#" class="card-text">${short.creationDate}</a>
+                      <button type="button" class="btn btn-primary">Delete  Pack</button>
                     </div>
                     </div>
                   </div>`
