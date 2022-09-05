@@ -62,7 +62,7 @@
                 <h5 class="card-title">${response.user.name}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${response.user.email}</h6>
                 <p class="card-text">${response.user.biography}</p>
-                <a href="#" class="card-link">${response.user.role}</a>
+                <p class="card-text">${response.user.role}</p>
               </div>`
                 document.getElementById("profile").innerHTML = user;
               let shorts =  response.user.shortsAsCreator.map((short)=>{
