@@ -56,8 +56,8 @@
               }else if(response.status == 200 || response.users) {
                  const hide = document.getElementById("hide");
                  hide.style.display = "none"; 
-                const users = response.users.users.map((user)=>{
-                  ` <tr>
+                const users = response.users.map((user)=>{
+                 return ` <tr>
                       <td>${user.id}</td>
                       <td>${user.name}</td>
                       <td>${user.email}</td>
