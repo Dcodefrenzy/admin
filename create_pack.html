@@ -67,7 +67,7 @@
           event.preventDefault();
           const title = document.getElementById("input-title");
           const content = document.getElementById("input-content");
-          let shorts = {title:email.title, content:content.value, categories:[1]}
+          let shorts = {title:title.value, content:content.value, categories:[1]}
           
           fetch("https://api.lebenswiki.com/api/v1/shorts/create", {
               method:"POST",
