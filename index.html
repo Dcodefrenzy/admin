@@ -24,14 +24,14 @@
       <div class="overlay-panel" id="hide"> <p class="overlay-content loader"></p></div>
       <div class="container">
         <div class="row">
-          <div class="col-5">
+          <div class="col-12 col-md-5">
             <div class="card" id="profile">
             </div>
           </div>
-          <div class="col-7">
+          <div class="col-12 col-md-7">
             <div class="card">
               <div class="row m-3" id="shorts">
-                <div class="col-6 p-3">
+                <div class="col-12 col-md-6 p-3">
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
@@ -42,7 +42,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-6 p-3">
+                <div class="col-12 col-md-6 p-3">
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
@@ -95,7 +95,7 @@
                     </div>
                   </div>`
                 })
-                document.getElementById("shorts").innerHTML = shorts;
+                document.getElementById("shorts").append(shorts);
 
               }
             })
