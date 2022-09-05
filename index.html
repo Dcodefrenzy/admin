@@ -17,7 +17,7 @@
           <ul id='MenuItems'>
             <li><a href='/admin'>Dashboard</a></li>
             <li><a href='/admin/users'>Users</a></li>
-            <li><a href='#'>Logout</a></li>
+            <li><a href='#' id="logout">Logout</a></li>
           </ul>
         </nav>
       </div>
@@ -85,7 +85,12 @@
               }
             })
         });
-
+        let logout = document.getElementById("logout");
+        logout.addEventListener('onclick', (event)=>{
+          event.preventDefault();
+          sessionStorage.removeItem("user");
+                window.location = "https://dcodefrenzy.github.io/admin/login";
+        })
     </script>
   </body>
 </html>
