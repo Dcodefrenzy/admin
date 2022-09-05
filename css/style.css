@@ -206,6 +206,9 @@ table, th, td, tr {
 	z-index: 1;
 	background-color:  black;
 }
+.background-dark {
+	background-color: black;
+}
 .overlay-content {
 	position: relative;
 	color: black;
