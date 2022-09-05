@@ -54,6 +54,8 @@
               if(response.status === 401) {
                 window.location = "https://dcodefrenzy.github.io/admin/login"
               }else if(response.status == 200) {
+                 const hide = document.getElementById("hide");
+                 hide.style.display = "none"; 
                 const users = req.users.map((user)=>{
                   ` <tr>
                       <td>1</td>
