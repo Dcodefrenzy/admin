@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="full-page">
+      <div class="navbar">
+        <div>
+          <a href='website.html' class="logo">Lebenswiki</a>
+        </div>
+        <nav>
+          <ul id='MenuItems'>
+            <li><a href='/admin'>Dashboard</a></li>
+            <li><a href='/admin/users'>Users</a></li>
+            <li><a href='#'>Logout</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class=" flex-container">
+        <p class="panel background-white padding-sm" id="error-span">Hello Error</p>
+      </div>
+      <div class="overlay-panel" id="hide"> <p class="overlay-content loader"></p></div>
+        <div class="home">
+        
+          <h1>Create Pack</h1>
+        </div>
+      <div id='form' class='login-page'>
+        <div class="flex-container">
+          <form id='create_short' class='input-group-register'>
+            <input type='text' id="input-title" class='input-field'placeholder='Title' required>
+            <textarea class='input-field' id="input-content" name="content" placeholder='Content' id="" cols="30" rows="10"></textarea>
+            <button type='submit'class='submit-btn'>Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+       token = JSON.parse(sessionStorage.getItem("user"))
+      console.log(token)
+        window.addEventListener('load', (event) => {
+          event.preventDefault()
+            fetch("https://api.lebenswiki.com/api/v1/users/profile", {
+                method:"GET",
+                headers: {'Content-Type': "application/json", "authorization":token}
+            })
+            .then(res=>res.json())
+            .then((response)=>{
+              console.log(response)
+              if(response.status === 401) {
+                window.location = "https://dcodefrenzy.github.io/admin/login"
+              }else if(response.status == 200) {
+                 const hide = document.getElementById("hide");
+                 hide.style.display = "none"; 
+              }
+            })
+        });
+
+
+
+
+         const form = document.querySelector("form");
+      
+      form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const title = document.getElementById("input-title");
+          const content = document.getElementById("input-content");
+          let shorts = {title:email.title, content:content.value, categories:[1]}
+          
+          fetch("https://api.lebenswiki.com/api/v1/shorts/create", {
+              method:"POST",
+              body:JSON.stringify(shorts),
+              headers: {'Content-Type': "application/json", "authorization":token}
+          })
+          .then(res=>res.json())
+          .then(response=>{
+              console.log(response);
+              let errorSpan = document.getElementById("error-span");
+              if(response.status == 200) {
+                errorSpan.style.display = "block";
+                errorSpan.style.color = "green";
+                errorSpan.innerHTML = "Login Sucessful!"
+                window.location.href = "https://dcodefrenzy.github.io/admin";
+                
+              }else{
+                if(response.errorCode === 400) {
+                errorSpan.style.display = "block";
+                errorSpan.style.color = "red";
+                errorSpan.innerHTML = `${response.errorLabel}: ${response.errorMessage}`;
+  
+                }else if(response.errorCode === 409){
+                errorSpan.style.display = "block";
+                errorSpan.style.color = "red";
+                errorSpan.innerHTML = `${response.errorLabel}: ${response.errorMessage}`;
+                }
+              }
+          })
+    
+      });
+    </script>
+  </body>
+</html>

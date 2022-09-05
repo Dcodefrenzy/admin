@@ -49,7 +49,7 @@
               errorSpan.innerHTML = "Login Sucessful!"
               sessionStorage.setItem("user", JSON.stringify(response.token))
               //localStorage.setItem(user, {token:response.token, id:response.id, info:response.user});
-              //window.location.href = "https://dcodefrenzy.github.io/admin";
+              window.location.href = "https://dcodefrenzy.github.io/admin";
               
             }else{
               if(response.errorCode === 400) {

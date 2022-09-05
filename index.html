@@ -13,9 +13,8 @@
         </div>
         <nav>
           <ul id='MenuItems'>
-            <li><a href='/lebenswiki_admin'>Dashboard</a></li>
-            <li><a href='/lebenswiki_admin/categories'>Users</a></li>
-            <li><a href='/lebenswiki_admin/categories'>Categories</a></li>
+            <li><a href='/admin'>Dashboard</a></li>
+            <li><a href='/admin/users'>Users</a></li>
             <li><a href='#'>Logout</a></li>
           </ul>
         </nav>
@@ -39,7 +38,7 @@
             .then((response)=>{
               console.log(response)
               if(response.status === 401) {
-               // window.location = "https://dcodefrenzy.github.io/admin/login"
+                window.location = "https://dcodefrenzy.github.io/admin/login"
               }else if(response.status == 200) {
                  const hide = document.getElementById("hide");
                  hide.style.display = "none"; 
