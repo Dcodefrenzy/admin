@@ -26,12 +26,12 @@
       </div>
     </div>
     <script>
-      storage = localStorage.getItem("user")
+      token = sessionStorage.getItem("user")
         window.addEventListener('load', (event) => {
           event.preventDefault()
             fetch("https://api.lebenswiki.com/api/v1/users/profile", {
                 method:"GET",
-                headers: {'Content-Type': "application/json", "authorization":storage.token}
+                headers: {'Content-Type': "application/json", "authorization":token}
             })
             .then(res=>res.json())
             .then((response)=>{
