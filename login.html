@@ -47,7 +47,7 @@
               errorSpan.style.display = "block";
               errorSpan.style.color = "green";
               errorSpan.innerHTML = "Login Sucessful!"
-              sessionStorage.setItem("user", response.token)
+              sessionStorage.setItem("user", JSON.stringify(response.token))
               //localStorage.setItem(user, {token:response.token, id:response.id, info:response.user});
               //window.location.href = "https://dcodefrenzy.github.io/admin";
               

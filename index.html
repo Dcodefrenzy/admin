@@ -26,7 +26,9 @@
       </div>
     </div>
     <script>
-      token = sessionStorage.getItem("user")
+      
+      token = JSON.parse(sessionStorage.getItem("user"))
+      console.log(token)
         window.addEventListener('load', (event) => {
           event.preventDefault()
             fetch("https://api.lebenswiki.com/api/v1/users/profile", {
