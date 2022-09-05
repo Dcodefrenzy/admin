@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="full-page">
+        <div class="home">
+          <h1>Login</h1>
+        </div>
+        <div class=" flex-container">
+          <p class="panel background-white padding-sm" id="error-span">Hello Error</p>
+        </div>
+      <div id='form' class='login-page'>
+        <div class="form-box">
+          <form id='login' class='input-group-login'>
+            <label for="email" class="text-white">Email</label>
+            <input type='text' id="input-mail" class='input-field'placeholder='Email Address' required >
+            <label for="password" class="text-white">Password</label>
+            <input type='password' id="input-password" class='input-field'placeholder='Enter Password' min="6" required>
+            <button type='submit'class='submit-btn'>Log in</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+    const form = document.querySelector("form");
+      
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const email = document.getElementById("input-mail");
+        const password = document.getElementById("input-password");
+        let user = {email:email.value, password:password.value}
+        
+        fetch("https://api.lebenswiki.com/api/v1/users/admin/login", {
+            method:"POST",
+            body:JSON.stringify(user),
+            headers: {'Content-Type': "application/json"}
+        })
+        .then(res=>res.json())
+        .then(response=>{
+            console.log(response);
+            let errorSpan = document.getElementById("error-span");
+            if(response.status && response.status == 200) {
+              errorSpan.style.display = "block";
+              errorSpan.style.color = "green";
+              errorSpan.innerHTML = "Login Sucessful!"
+              localStorage.setItem(user, response.body);
+              window.location.href = "https://dcodefrenzy.github.io/lebenswiki_admin";
+              
+            }else{
+              if(response.errorCode === 401) {
+              errorSpan.style.display = "block";
+              errorSpan.style.color = "red";
+              errorSpan.innerHTML = `${response.errorLabel}: ${response.errorMessage}`;
+
+              }else if(response.errorCode === 409){
+              errorSpan.style.display = "block";
+              errorSpan.style.color = "red";
+              errorSpan.innerHTML = `${response.errorLabel}: ${response.errorMessage}`;
+              }
+            }
+        })
+  
+    });
+    </script>
+  </body>
+</html>
