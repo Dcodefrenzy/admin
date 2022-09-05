@@ -43,15 +43,16 @@
         .then(response=>{
             console.log(response);
             let errorSpan = document.getElementById("error-span");
-            if(response.status && response.status == 200) {
+            if(response.status == 200) {
               errorSpan.style.display = "block";
               errorSpan.style.color = "green";
               errorSpan.innerHTML = "Login Sucessful!"
-              localStorage.setItem(user, {token:response.token, id:response.id, info:response.user});
+              sessionStorage.setItem("user", response.token)
+              //localStorage.setItem(user, {token:response.token, id:response.id, info:response.user});
               //window.location.href = "https://dcodefrenzy.github.io/admin";
               
             }else{
-              if(response.errorCode === 401) {
+              if(response.errorCode === 400) {
               errorSpan.style.display = "block";
               errorSpan.style.color = "red";
               errorSpan.innerHTML = `${response.errorLabel}: ${response.errorMessage}`;
