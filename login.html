@@ -47,8 +47,8 @@
               errorSpan.style.display = "block";
               errorSpan.style.color = "green";
               errorSpan.innerHTML = "Login Sucessful!"
-              localStorage.setItem(user, response.body);
-              window.location.href = "https://dcodefrenzy.github.io/admin";
+              localStorage.setItem(user, {token:response.token, id:response.id, info:response.user});
+              //window.location.href = "https://dcodefrenzy.github.io/admin";
               
             }else{
               if(response.errorCode === 401) {
